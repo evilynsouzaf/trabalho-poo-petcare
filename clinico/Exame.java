@@ -6,7 +6,9 @@ public class Exame extends RegistroClinico {
     private String tipoExame;
     private String resultado;
 
-    public Exame(int id, String data, String descricao, Veterinario veterinario, String tipoExame, String resultado) {
+    public Exame(int id, String data, String descricao, 
+                 Veterinario veterinario, String tipoExame, String resultado) 
+    {
         super(id, data, descricao, veterinario);
         this.tipoExame = tipoExame;
         this.resultado = resultado;
