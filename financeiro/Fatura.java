@@ -1,6 +1,6 @@
 package financeiro;
 
-import agendamento.Notificador;
+import notificacao.Notificador;
 import usuarios.Tutor;
 
 import java.time.LocalDate;
