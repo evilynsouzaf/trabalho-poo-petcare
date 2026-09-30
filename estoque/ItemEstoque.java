@@ -40,6 +40,10 @@ public class ItemEstoque {
         return true;
     }
 
+    public int getQuantidadeMinima() {
+        return quantidadeMinima;
+    }
+
     public int getQuantidade() {
         return quantidade;
     }

@@ -1,6 +1,6 @@
 package estoque;
 
-import agendamento.Notificador;
+import notificacao.Notificador;
 
 import java.util.ArrayList;
 import java.util.List;
