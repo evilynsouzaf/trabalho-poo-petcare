@@ -1,7 +1,7 @@
 package clinico;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class HistoricoClinico {
 
@@ -10,7 +10,6 @@ public class HistoricoClinico {
     private List<Vacina> vacinas;
     private List<Cirurgia> cirurgias;
     private List<Exame> exames;
-    private List<Tratamento> tratamentos;
     private boolean finalizado;
 
     public HistoricoClinico(int idAnimal) {
@@ -19,43 +18,39 @@ public class HistoricoClinico {
         this.vacinas = new ArrayList<>();
         this.cirurgias = new ArrayList<>();
         this.exames = new ArrayList<>();
-        this.tratamentos = new ArrayList<>();
         this.finalizado = false;
     }
 
     public void adicionarConsulta(Consulta c) {
-        if (finalizado) {
-            throw new IllegalStateException("Histórico finalizado.");
+        verificarFinalizado();
+        if (c == null) {
+            throw new IllegalArgumentException("Consulta não pode ser nula.");
         }
         consultas.add(c);
     }
 
     public void adicionarVacina(Vacina v) {
-        if (finalizado) {
-            throw new IllegalStateException("Histórico finalizado.");
+        verificarFinalizado();
+        if (v == null) {
+            throw new IllegalArgumentException("Vacina não pode ser nula.");
         }
         vacinas.add(v);
     }
 
     public void adicionarCirurgia(Cirurgia c) {
-        if (finalizado) {
-            throw new IllegalStateException("Histórico finalizado.");
+        verificarFinalizado();
+        if (c == null) {
+            throw new IllegalArgumentException("Cirurgia não pode ser nula.");
         }
         cirurgias.add(c);
     }
 
     public void adicionarExame(Exame e) {
-        if (finalizado) {
-            throw new IllegalStateException("Histórico finalizado.");
+        verificarFinalizado();
+        if (e == null) {
+            throw new IllegalArgumentException("Exame não pode ser nulo.");
         }
         exames.add(e);
-    }
-
-    public void adicionarTratamento(Tratamento t) {
-        if (finalizado) {
-            throw new IllegalStateException("Histórico finalizado.");
-        }
-        tratamentos.add(t);
     }
 
     public void finalizar() {
@@ -67,16 +62,34 @@ public class HistoricoClinico {
     }
 
     public List<Consulta> getConsultas() {
-        return consultas;
+        return new ArrayList<>(consultas);
     }
 
     public List<Vacina> getVacinas() {
-        return vacinas;
+        return new ArrayList<>(vacinas);
+    }
+
+    public List<Cirurgia> getCirurgias() {
+        return new ArrayList<>(cirurgias);
+    }
+
+    public List<Exame> getExames() {
+        return new ArrayList<>(exames);
+    }
+
+    public int getIdAnimal() {
+        return idAnimal;
     }
 
     public void exibir() {
         System.out.println("[HISTORICO] Consultas: " + consultas.size()
                 + " | Vacinas: " + vacinas.size()
                 + " | Cirurgias: " + cirurgias.size());
+    }
+
+    private void verificarFinalizado() {
+        if (finalizado) {
+            throw new IllegalStateException("Histórico finalizado.");
+        }
     }
 }
