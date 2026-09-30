@@ -54,6 +54,10 @@ public class Notificador {
         System.out.println("[NOTIFICADOR] " + canal + " -> " + destinatario + ": Fatura enviada.");
     }
 
+    public void enviarAlertaEstoque(String mensagem) {
+        System.out.println("[NOTIFICADOR] " + canal + " -> " + destinatario + ": " + mensagem);
+    }
+
     public void enviarAlerta(String destino, String mensagem) {
         System.out.println("[NOTIFICADOR] " + canal + " -> " + destino + ": " + mensagem);
     }
